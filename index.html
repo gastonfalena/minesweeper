@@ -30,10 +30,28 @@
       </div>
       <div class="modal" id="result-modal">
         <div class="modal-content">
-          <h2 id="result-title">¡Ganaste!</h2>
+          <h2 id="result-title">You Won!</h2>
           <p id="result-message"></p>
-          <button id="play-again">Jugar otra vez</button>
+          <button id="play-again">Play again</button>
         </div>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="contact.html">Contact</a>
+      <a href="#" id="github-link" target="_blank">GitHub</a>
+      <button id="theme-toggle">Dark Mode</button>
+      <button id="show-ranking">Ranking</button>
+    </nav>
+
+    <div class="modal" id="ranking-modal">
+      <div class="modal-content">
+        <h2>Ranking</h2>
+        <div class="sort-options">
+          <button id="sort-by-score">Order by score</button>
+          <button id="sort-by-date">Order by date</button>
+        </div>
+        <div id="ranking-list"></div>
+        <button id="close-ranking">Close</button>
       </div>
     </div>
   </body>
