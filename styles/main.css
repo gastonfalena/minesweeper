@@ -22,3 +22,42 @@ body {
   background-color: #ddd;
   border-radius: 5px;
 }
+
+.mines-counter,
+.timer {
+  font-family: monospace;
+  font-size: 24px;
+  padding: 5px 10px;
+  background-color: #000;
+  color: red;
+  border-radius: 3px;
+  min-width: 60px;
+}
+
+.reset-btn {
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: #bbb;
+}
+
+.board-container {
+  margin: 20px auto;
+}
+
+.board {
+  display: inline-grid;
+  grid-template-columns: repeat(8, 40px);
+  grid-template-rows: repeat(8, 40px);
+  gap: 2px;
+  background-color: #999;
+  padding: 5px;
+  border-radius: 5px;
+}
