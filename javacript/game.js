@@ -39,3 +39,26 @@ function initGame() {
   updateMinesCounter();
   updateTimer();
 }
+
+function placeMines(firstClickRow, firstClickCol) {
+  var minesPlaced = 0;
+
+  while (minesPlaced < mineCount) {
+    var row = Math.floor(Math.random() * boardSize);
+    var col = Math.floor(Math.random() * boardSize);
+
+    var isAdjacent =
+      Math.abs(row - firstClickRow) <= 1 && Math.abs(col - firstClickCol) <= 1;
+
+    if (
+      !board[row][col].isMine &&
+      !(row === firstClickRow && col === firstClickCol) &&
+      !isAdjacent
+    ) {
+      board[row][col].isMine = true;
+      minesPlaced++;
+
+      updateAdjacentCells(row, col);
+    }
+  }
+}
