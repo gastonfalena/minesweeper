@@ -108,3 +108,35 @@ body {
   width: 90%;
   text-align: center;
 }
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal button {
+  margin: 10px 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.main-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.main-nav a,
+.main-nav button {
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #333;
+  background-color: #ddd;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.main-nav a:hover,
+.main-nav button:hover {
+  background-color: #bbb;
+}
