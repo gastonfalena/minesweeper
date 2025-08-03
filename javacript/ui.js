@@ -45,3 +45,48 @@ function initUI() {
 
   loadThemePreference();
 }
+
+function showNameModal() {
+  nameModal.style.display = "flex";
+  document.getElementById("player-name").value = "";
+  document.getElementById("player-name").focus();
+}
+
+function showResultModal(isWin) {
+  var resultTitle = document.getElementById("result-title");
+  var resultMessage = document.getElementById("result-message");
+
+  if (isWin) {
+    resultTitle.textContent = "¡Ganaste!";
+    resultMessage.textContent = `Felicidades ${playerName}! Completaste el juego en ${seconds} segundos.`;
+  } else {
+    resultTitle.textContent = "¡Perdiste!";
+    resultMessage.textContent = `Lo siento ${playerName}, encontraste una mina. Inténtalo de nuevo.`;
+  }
+
+  resultModal.style.display = "flex";
+}
+
+function hideResultModal() {
+  resultModal.style.display = "none";
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+  var themeToggle = document.getElementById("theme-toggle");
+  themeToggle.textContent = document.body.classList.contains("dark-mode")
+    ? "Modo Claro"
+    : "Modo Oscuro";
+
+  localStorage.setItem(
+    "themePreference",
+    document.body.classList.contains("dark-mode") ? "dark" : "light"
+  );
+}
+function loadThemePreference() {
+  var theme = localStorage.getItem("themePreference");
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+    document.getElementById("theme-toggle").textContent = "Modo Claro";
+  } // TODO: html
+}
