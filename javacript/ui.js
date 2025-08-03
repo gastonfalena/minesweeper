@@ -57,11 +57,11 @@ function showResultModal(isWin) {
   var resultMessage = document.getElementById("result-message");
 
   if (isWin) {
-    resultTitle.textContent = "¡Ganaste!";
-    resultMessage.textContent = `Felicidades ${playerName}! Completaste el juego en ${seconds} segundos.`;
+    resultTitle.textContent = "You win!";
+    resultMessage.textContent = `Congratulations ${playerName}! You completed the game in ${seconds} seconds.`;
   } else {
-    resultTitle.textContent = "¡Perdiste!";
-    resultMessage.textContent = `Lo siento ${playerName}, encontraste una mina. Inténtalo de nuevo.`;
+    resultTitle.textContent = "You lost!";
+    resultMessage.textContent = `Sorry ${playerName}, you found a mine. Try again`;
   }
 
   resultModal.style.display = "flex";
@@ -75,8 +75,8 @@ function toggleTheme() {
   document.body.classList.toggle("dark-mode");
   var themeToggle = document.getElementById("theme-toggle");
   themeToggle.textContent = document.body.classList.contains("dark-mode")
-    ? "Modo Claro"
-    : "Modo Oscuro";
+    ? "Light Mode"
+    : "Dark Mode";
 
   localStorage.setItem(
     "themePreference",
@@ -87,6 +87,6 @@ function loadThemePreference() {
   var theme = localStorage.getItem("themePreference");
   if (theme === "dark") {
     document.body.classList.add("dark-mode");
-    document.getElementById("theme-toggle").textContent = "Modo Claro";
+    document.getElementById("theme-toggle").textContent = "Light Mode";
   } // TODO: html
 }
