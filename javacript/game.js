@@ -62,3 +62,21 @@ function placeMines(firstClickRow, firstClickCol) {
     }
   }
 }
+
+function updateAdjacentCells(row, col) {
+  for (
+    var i = Math.max(0, row - 1);
+    i <= Math.min(boardSize - 1, row + 1);
+    i++
+  ) {
+    for (
+      var j = Math.max(0, col - 1);
+      j <= Math.min(boardSize - 1, col + 1);
+      j++
+    ) {
+      if (!(i === row && j === col)) {
+        board[i][j].value++;
+      }
+    }
+  }
+}
