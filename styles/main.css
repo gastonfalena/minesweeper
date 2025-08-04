@@ -28,6 +28,18 @@ body.dark-mode {
   border-radius: 5px;
 }
 
+.difficulty-selector select {
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+body.dark-mode .difficulty-selector select {
+  background-color: #444;
+  color: #fff;
+}
+
 body.dark-mode .game-controls {
   background-color: #444;
 }
