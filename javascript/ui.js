@@ -32,11 +32,14 @@ function initUI() {
 
   document.getElementById("github-link").href =
     "https://github.com/gastonfalena/minesweeper";
-
+  document
+    .getElementById("difficulty-select")
+    .addEventListener("change", function () {
+      setDifficulty(this.value);
+    });
   initGame();
   renderBoard();
   showNameModal();
-
   loadThemePreference();
 }
 function renderBoard() {

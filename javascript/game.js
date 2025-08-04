@@ -186,6 +186,11 @@ function updateMinesCounter() {
       .padStart(3, "0");
   }
 }
+function setDifficulty(newDifficulty) {
+  difficulty = newDifficulty;
+  initGame();
+  renderBoard();
+}
 function endGame(isWin) {
   clearInterval(timerInterval);
 
@@ -206,10 +211,5 @@ function endGame(isWin) {
     return Math.floor(
       (boardSize * boardSize * difficultyFactor * 100) / (seconds + 1)
     );
-  }
-  function setDifficulty(newDifficulty) {
-    difficulty = newDifficulty;
-    initGame();
-    renderBoard();
   }
 }
