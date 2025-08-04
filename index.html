@@ -12,22 +12,15 @@
       <h1>MinesWeeper</h1>
 
       <div class="game-controls">
-        <divc class="mines-counter">10</divc>
-        <button class="reset-btn">Reset</button>
-        <div class="timer">0</div>
-
-        <div class="difficulty-selector">
-          <label for="difficulty">Difficulty:</label>
-          <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </div>
+        <div class="mines-counter">10</div>
+        <button id="reset-btn" class="reset-btn">Reset</button>
+        <div class="timer">000</div>
       </div>
+
       <div class="board-container">
         <div class="board" id="board"></div>
       </div>
+
       <div class="modal" id="name-modal">
         <div class="modal-content">
           <h2>Enter your name</h2>
@@ -35,18 +28,20 @@
           <button id="start-game">Start</button>
         </div>
       </div>
+
       <div class="modal" id="result-modal">
         <div class="modal-content">
-          <h2 id="result-title">You Won!</h2>
+          <h2 id="result-title">You win!</h2>
           <p id="result-message"></p>
           <button id="play-again">Play again</button>
         </div>
       </div>
     </div>
+
     <nav class="main-nav">
       <a href="contact.html">Contact</a>
       <a href="#" id="github-link" target="_blank">GitHub</a>
-      <button id="theme-toggle">Dark Mode</button>
+      <button id="theme-toggle">Dark mode</button>
       <button id="show-ranking">Ranking</button>
     </nav>
 
@@ -61,5 +56,8 @@
         <button id="close-ranking">Close</button>
       </div>
     </div>
+    <script src="javascript/game.js"></script>
+    <script src="javascript/ui.js"></script>
+    <!-- <script src="javascript/storage.js"></script> -->
   </body>
 </html>
