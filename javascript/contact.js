@@ -48,6 +48,7 @@ function validateForm(name, email, message) {
     isValid = false;
   }
 
+  // Validate message
   if (message.length < 5) {
     messageError.textContent = "Message must be at least 5 characters long";
     messageError.style.display = "block";
@@ -59,10 +60,22 @@ function validateForm(name, email, message) {
 
 function sendEmail(name, email, message) {
   var subject = "Contact from Minesweeper";
-  var body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-  window.location.href = `mailto:gaston@gmail.com?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
+  var body =
+    "Name: " +
+    name +
+    "%0D%0A" +
+    "Email: " +
+    email +
+    "%0D%0A" +
+    "%0D%0A" +
+    "Message:%0D%0A" +
+    message;
+
+  window.location.href =
+    "mailto:gaston@gmail.com?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
 }
 
 document.addEventListener("DOMContentLoaded", initContactForm);
