@@ -191,9 +191,17 @@ function setDifficulty(newDifficulty) {
   initGame();
   renderBoard();
 }
+function calculateScore() {
+  var difficultyFactor = 1;
+  if (difficulty === "medium") difficultyFactor = 2;
+  if (difficulty === "hard") difficultyFactor = 3;
+
+  return Math.floor(
+    (boardSize * boardSize * difficultyFactor * 100) / (seconds + 1)
+  );
+}
 function endGame(isWin) {
   clearInterval(timerInterval);
-
   if (isWin) {
     saveGameResult({
       name: playerName,
@@ -203,13 +211,5 @@ function endGame(isWin) {
       difficulty: difficulty,
     });
   }
-  function calculateScore() {
-    var difficultyFactor = 1;
-    if (difficulty === "medium") difficultyFactor = 2;
-    if (difficulty === "hard") difficultyFactor = 3;
-
-    return Math.floor(
-      (boardSize * boardSize * difficultyFactor * 100) / (seconds + 1)
-    );
-  }
+  showResultModal(isWin);
 }

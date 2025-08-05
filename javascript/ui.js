@@ -17,6 +17,9 @@ function initUI() {
   document.getElementById("play-again").addEventListener("click", resetGame);
   document.getElementById("reset-btn").addEventListener("click", resetGame);
   document
+    .getElementById("show-ranking")
+    .addEventListener("click", showRanking);
+  document
     .getElementById("sort-by-score")
     .addEventListener("click", function () {
       sortRanking("score");
@@ -26,6 +29,9 @@ function initUI() {
     .addEventListener("click", function () {
       sortRanking("date");
     });
+  document
+    .getElementById("close-ranking")
+    .addEventListener("click", closeRanking);
   document
     .getElementById("theme-toggle")
     .addEventListener("click", toggleTheme);
@@ -140,6 +146,54 @@ function resetGame() {
   renderBoard();
 }
 
+function showRanking() {
+  renderRanking();
+  rankingModal.style.display = "flex";
+}
+
+function closeRanking() {
+  rankingModal.style.display = "none";
+}
+
+function renderRanking(sortBy = "score") {
+  var rankingList = document.getElementById("ranking-list");
+  rankingList.innerHTML = "";
+
+  var games = getGameResults();
+
+  if (sortBy === "score") {
+    games.sort(function (a, b) {
+      return b.score - a.score;
+    });
+  } else {
+    games.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+  }
+
+  games.forEach(function (game) {
+    var item = document.createElement("div");
+    item.className = "ranking-item";
+
+    var date = new Date(game.date);
+    var dateStr = date.toLocaleDateString() + " " + date.toLocaleTimeString();
+
+    item.innerHTML = `
+            <span>${game.name}</span>
+            <span>Dificultad: ${game.difficulty}</span>
+            <span>Puntaje: ${game.score}</span>
+            <span>${game.duration}s</span>
+            <span>${dateStr}</span>
+        `;
+
+    rankingList.appendChild(item);
+  });
+}
+
+function sortRanking(by) {
+  renderRanking(by);
+}
+
 function toggleTheme() {
   document.body.classList.toggle("dark-mode");
   var themeToggle = document.getElementById("theme-toggle");
@@ -157,7 +211,7 @@ function loadThemePreference() {
   if (theme === "dark") {
     document.body.classList.add("dark-mode");
     document.getElementById("theme-toggle").textContent = "Light Mode";
-  } // TODO:
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initUI);
