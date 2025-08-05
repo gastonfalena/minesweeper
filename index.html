@@ -8,6 +8,63 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <h1>Buscaminas</h1>
+    <div class="game-container">
+      <h1>MinesWeeper</h1>
+
+      <div class="game-controls">
+        <div class="mines-counter">10</div>
+        <button id="reset-btn" class="reset-btn">Reset</button>
+        <div class="timer">000</div>
+        <div class="difficulty-selector">
+          <select id="difficulty-select">
+            <option value="easy">easy (8x8)</option>
+            <option value="medium">Medium (12x12)</option>
+            <option value="hard">Hard (16x16)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="board-container">
+        <div class="board" id="board"></div>
+      </div>
+
+      <div class="modal" id="name-modal">
+        <div class="modal-content">
+          <h2>Enter your name</h2>
+          <input type="text" id="player-name" placeholder="Mínimo 3 letras" />
+          <button id="start-game">Start</button>
+        </div>
+      </div>
+
+      <div class="modal" id="result-modal">
+        <div class="modal-content">
+          <h2 id="result-title">You win!</h2>
+          <p id="result-message"></p>
+          <button id="play-again">Play again</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="contact.html">Contact</a>
+      <a href="#" id="github-link" target="_blank">GitHub</a>
+      <button id="theme-toggle">Dark mode</button>
+      <button id="show-ranking">Ranking</button>
+    </nav>
+
+    <div class="modal" id="ranking-modal">
+      <div class="modal-content">
+        <h2>Ranking</h2>
+        <div class="sort-options">
+          <button id="sort-by-score">Order by score</button>
+          <button id="sort-by-date">Order by date</button>
+        </div>
+        <div id="ranking-list"></div>
+        <button id="close-ranking">Close</button>
+      </div>
+    </div>
+    <script src="javascript/game.js"></script>
+    <script src="javascript/ui.js"></script>
+    <script src="javascript/storage.js"></script>
   </body>
 </html>
