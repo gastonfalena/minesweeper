@@ -1,6 +1,6 @@
 # minesweeper
 
-Play:https://gastonfalena.github.io/minesweeper/
+Play: https://gastonfalena.github.io/minesweeper/
 
 What is the classic game Minesweeper?
 
