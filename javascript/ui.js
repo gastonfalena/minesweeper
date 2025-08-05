@@ -48,11 +48,12 @@ function initUI() {
   showNameModal();
   loadThemePreference();
 }
+
 function renderBoard() {
   boardElement.innerHTML = "";
 
-  boardElement.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
-  boardElement.style.gridTemplateRows = `repeat(${boardSize}, 1fr)`;
+  boardElement.style.gridTemplateColumns = "repeat(" + boardSize + ", 1fr)";
+  boardElement.style.gridTemplateRows = "repeat(" + boardSize + ", 1fr)";
 
   for (var i = 0; i < boardSize; i++) {
     for (var j = 0; j < boardSize; j++) {
@@ -95,11 +96,13 @@ function renderBoard() {
     }
   }
 }
+
 function showNameModal() {
   nameModal.style.display = "flex";
   document.getElementById("player-name").value = "";
   document.getElementById("player-name").focus();
 }
+
 function hideNameModal() {
   nameModal.style.display = "none";
 }
@@ -114,9 +117,7 @@ function startGameWithName() {
     initGame();
     renderBoard();
   } else {
-    alert(
-      "Por favor ingresa un nombre válido (mínimo 3 caracteres alfanuméricos)"
-    );
+    alert("Please enter a valid name (minimum 3 alphanumeric characters)");
     nameInput.focus();
   }
 }
@@ -127,10 +128,16 @@ function showResultModal(isWin) {
 
   if (isWin) {
     resultTitle.textContent = "You win!";
-    resultMessage.textContent = `Congratulations ${playerName}! You completed the game in ${seconds} seconds.`;
+    resultMessage.textContent =
+      "Congratulations " +
+      playerName +
+      "! You completed the game in " +
+      seconds +
+      " seconds.";
   } else {
     resultTitle.textContent = "You lost!";
-    resultMessage.textContent = `Sorry ${playerName}, you found a mine. Try again`;
+    resultMessage.textContent =
+      "Sorry " + playerName + ", you found a mine. Try again";
   }
 
   resultModal.style.display = "flex";
@@ -155,7 +162,8 @@ function closeRanking() {
   rankingModal.style.display = "none";
 }
 
-function renderRanking(sortBy = "score") {
+function renderRanking(sortBy) {
+  sortBy = sortBy || "score";
   var rankingList = document.getElementById("ranking-list");
   rankingList.innerHTML = "";
 
@@ -178,13 +186,13 @@ function renderRanking(sortBy = "score") {
     var date = new Date(game.date);
     var dateStr = date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
-    item.innerHTML = `
-            <span>${game.name}</span>
-            <span>Dificultad: ${game.difficulty}</span>
-            <span>Puntaje: ${game.score}</span>
-            <span>${game.duration}s</span>
-            <span>${dateStr}</span>
-        `;
+    item.innerHTML = [
+      "<span>" + game.name + "</span>",
+      "<span>Difficulty: " + game.difficulty + "</span>",
+      "<span>Score: " + game.score + "</span>",
+      "<span>" + game.duration + "s</span>",
+      "<span>" + dateStr + "</span>",
+    ].join("");
 
     rankingList.appendChild(item);
   });
@@ -206,6 +214,7 @@ function toggleTheme() {
     document.body.classList.contains("dark-mode") ? "dark" : "light"
   );
 }
+
 function loadThemePreference() {
   var theme = localStorage.getItem("themePreference");
   if (theme === "dark") {

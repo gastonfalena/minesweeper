@@ -17,6 +17,7 @@ var difficultySettings = {
   medium: { size: 12, mines: 25 },
   hard: { size: 16, mines: 40 },
 };
+
 function initGame() {
   board = [];
   flaggedCount = 0;
@@ -62,7 +63,6 @@ function placeMines(firstClickRow, firstClickCol) {
     ) {
       board[row][col].isMine = true;
       minesPlaced++;
-
       updateAdjacentCells(row, col);
     }
   }
@@ -85,6 +85,7 @@ function updateAdjacentCells(row, col) {
     }
   }
 }
+
 function revealCell(row, col) {
   var cell = board[row][col];
 
@@ -173,7 +174,12 @@ function startTimer() {
 function updateTimer() {
   var timerElement = document.querySelector(".timer");
   if (timerElement) {
-    timerElement.textContent = seconds.toString().padStart(3, "0");
+    timerElement.textContent =
+      seconds < 10
+        ? "00" + seconds
+        : seconds < 100
+        ? "0" + seconds
+        : seconds.toString();
   }
 }
 
@@ -181,16 +187,21 @@ function updateMinesCounter() {
   var minesCounterElement = document.querySelector(".mines-counter");
   if (minesCounterElement) {
     var remainingMines = mineCount - flaggedCount;
-    minesCounterElement.textContent = remainingMines
-      .toString()
-      .padStart(3, "0");
+    minesCounterElement.textContent =
+      remainingMines < 10
+        ? "00" + remainingMines
+        : remainingMines < 100
+        ? "0" + remainingMines
+        : remainingMines.toString();
   }
 }
+
 function setDifficulty(newDifficulty) {
   difficulty = newDifficulty;
   initGame();
   renderBoard();
 }
+
 function calculateScore() {
   var difficultyFactor = 1;
   if (difficulty === "medium") difficultyFactor = 2;
@@ -200,6 +211,7 @@ function calculateScore() {
     (boardSize * boardSize * difficultyFactor * 100) / (seconds + 1)
   );
 }
+
 function endGame(isWin) {
   clearInterval(timerInterval);
   if (isWin) {
