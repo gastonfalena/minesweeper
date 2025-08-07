@@ -70,13 +70,19 @@ body.dark-mode .game-controls {
 }
 
 .board {
-  display: inline-grid;
-  grid-template-columns: repeat(8, 40px);
-  grid-template-rows: repeat(8, 40px);
+  display: flex;
+  flex-wrap: wrap;
+  width: 336px;
   gap: 2px;
+  margin: 0 auto;
   background-color: #999;
-  padding: 5px;
-  border-radius: 5px;
+}
+.board.medium {
+  width: 504px; /* 12x12 */
+}
+
+.board.hard {
+  width: 672px; /* 16x16 */
 }
 
 .cell {
@@ -90,6 +96,7 @@ body.dark-mode .game-controls {
   cursor: pointer;
   user-select: none;
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .cell.revealed {
@@ -223,11 +230,6 @@ body.dark-mode .ranking-item {
 }
 
 @media (max-width: 600px) {
-  .board {
-    grid-template-columns: repeat(8, 30px);
-    grid-template-rows: repeat(8, 30px);
-  }
-
   .cell {
     width: 30px;
     height: 30px;
