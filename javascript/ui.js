@@ -52,8 +52,12 @@ function initUI() {
 function renderBoard() {
   boardElement.innerHTML = "";
 
-  boardElement.style.gridTemplateColumns = "repeat(" + boardSize + ", 1fr)";
-  boardElement.style.gridTemplateRows = "repeat(" + boardSize + ", 1fr)";
+  boardElement.className = "board";
+  if (boardSize === 12) {
+    boardElement.classList.add("medium");
+  } else if (boardSize === 16) {
+    boardElement.classList.add("hard");
+  }
 
   for (var i = 0; i < boardSize; i++) {
     for (var j = 0; j < boardSize; j++) {
